@@ -1,5 +1,6 @@
 services:
   sales-airflow:
+    container_name: retail_airflow
     image: sales-airflow:latest
     volumes:
       - ./airflow:/opt/airflow
@@ -15,7 +16,7 @@ services:
       airflow standalone
       "
   postgres:
-    container_name: my_postgres_db
+    container_name: retail_database
     image: postgres:latest
     environment:
       POSTGRES_USER: database
