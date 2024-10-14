@@ -1,0 +1,77 @@
+erDiagram
+    STORE {
+        int store_id PK
+        string name
+        string address
+        string city
+        string state
+        string zip_code
+        string phone
+    }
+    EMPLOYEE {
+        int employee_id PK
+        string first_name
+        string last_name
+        date hire_date
+        string position
+        float salary
+        int store_id FK
+    }
+    PRODUCT {
+        int product_id PK
+        string name
+        string description
+        float price
+        int supplier_id FK
+    }
+    INVENTORY {
+        int inventory_id PK
+        int store_id FK
+        int product_id FK
+        int quantity
+    }
+    SUPPLIER {
+        int supplier_id PK
+        string name
+        string contact_person
+        string phone
+        string email
+    }
+    CUSTOMER {
+        int customer_id PK
+        string first_name
+        string last_name
+        string email
+        string phone
+    }
+    SALE {
+        int sale_id PK
+        int store_id FK
+        int customer_id FK
+        int employee_id FK
+        date sale_date
+        float total_amount
+    }
+    SALE_ITEM {
+        int sale_item_id PK
+        int sale_id FK
+        int product_id FK
+        int quantity
+        float price
+    }
+    DEPARTMENT {
+        int department_id PK
+        string name
+        int store_id FK
+    }
+
+    STORE ||--o{ EMPLOYEE : employs
+    STORE ||--o{ INVENTORY : stocks
+    STORE ||--o{ SALE : processes
+    STORE ||--o{ DEPARTMENT : has
+    EMPLOYEE ||--o{ SALE : handles
+    PRODUCT ||--o{ INVENTORY : included_in
+    PRODUCT ||--o{ SALE_ITEM : sold_as
+    SUPPLIER ||--o{ PRODUCT : supplies
+    CUSTOMER ||--o{ SALE : makes
+    SALE ||--o{ SALE_ITEM : contains
