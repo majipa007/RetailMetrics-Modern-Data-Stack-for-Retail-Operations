@@ -64,5 +64,3 @@ $$;
 --     '[{"product_id": 1, "quantity": 2}, {"product_id": 2, "quantity": 1}]'  -- p_product_list
 -- );
 
--- select * from sale_item;
-
