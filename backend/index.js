@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors'; // Import CORS middleware
-import { pool, recordSale } from './procedures.js';
+import { pool, recordSale, recordInventory} from './procedures.js';
 
 const app = express();
 const port = 3000;
@@ -23,6 +23,17 @@ app.post('/sales', async (req, res) => {
         res.status(500).json({ error: 'Failed to record sale', details: err.message });
     }
 });
+
+app.post('/inventory', async (req, res)=>{
+    const {store_id, product_id, quantity} = req.body;
+    try {
+        const result = await recordInventory(store_id, product_id, quantity);
+        res.status(200).json({message: "Products added successfully", result});
+    } catch (error) {
+        console.error("Failed to update inventory", error);
+        res.satus(500).json({error: 'Failed to update inventory', details: error.message});
+    }
+})
 
 // Start the server
 app.listen(port, () => {

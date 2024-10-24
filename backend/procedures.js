@@ -26,5 +26,20 @@ const recordSale = async (store_id, customer_id, employee_id, product_list) => {
     }
 };
 
-export {pool, recordSale};
+const recordInventory = async (store_id, product_id, quantity)=>{
+    try {
+        await pool.query('set search_path to retail_shop');
+        await pool.query(
+            'CALL add_to_inventory($1, $2, $3)',
+            [store_id, product_id, quantity]
+        );
+        return {message: 'Product added to inventory successfully'};
+
+    } catch (error) {
+        console.error('Error recording sale:', err);
+        throw err;
+    }
+}
+
+export {pool, recordSale, recordInventory};
 
