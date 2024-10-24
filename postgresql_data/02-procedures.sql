@@ -64,3 +64,74 @@ $$;
 --     '[{"product_id": 1, "quantity": 2}, {"product_id": 2, "quantity": 1}]'  -- p_product_list
 -- );
 
+
+-- procedure for adding product to inventory
+
+CREATE OR REPLACE PROCEDURE add_to_inventory(
+	p_store_id int, 
+	p_product_id int, 
+	p_quantity int
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	-- checking if the product exists
+	IF EXISTS (SELECT 1 FROM inventory where store_id = p_store_id AND product_id = p_product_id) THEN
+		UPDATE inventory 
+		SET quantity = quantity + p_quantity
+		WHERE store_id = p_store_id AND product_id = p_product_id;
+	ELSE
+		INSERT INTO inventory (store_id, product_id, quantity)
+		VALUES (p_store_id, p_product_id, p_quantity);
+	END IF;
+END;
+$$;
+
+
+-- CALL add_to_inventory(
+-- 1, --p_store_id
+-- 2, --p_product_id
+-- 100 --p_quantity
+-- );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
