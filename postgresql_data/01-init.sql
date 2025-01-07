@@ -15,16 +15,42 @@ phone varchar(15) unique not null
 
 -- Insert dummy data into the 'store' table
 INSERT INTO store (store_name, address, phone) VALUES
-('Downtown Market', '123 Main St, Springfield, IL 62701', '217-555-0123'),
-('Sunset Grocers', '456 Elm St, Oak Park, IL 60302', '708-555-4567'),
-('Green Valley Organics', '789 Pine St, Madison, WI 53703', '608-555-7890'),
-('CityMart', '101 Maple Ave, Chicago, IL 60616', '312-555-1010'),
-('Fresh Produce Hub', '202 Oak St, Evanston, IL 60201', '847-555-2020'),
-('Urban Essentials', '303 Birch Rd, Milwaukee, WI 53202', '414-555-3030'),
-('Suburban Delights', '404 Cedar Dr, Naperville, IL 60540', '630-555-4040'),
-('Lakeview Mart', '505 Lake St, Kenosha, WI 53140', '262-555-5050'),
-('Healthy Harvest', '606 Walnut Ave, Rockford, IL 61101', '815-555-6060'),
-('Midtown Supplies', '707 Ash St, Peoria, IL 61602', '309-555-7070');
+('Andhra Fresh', 'Andhra Pradesh', '0866-555-0123'),
+('Itanagar Mart', 'Arunachal Pradesh', '0360-555-4567'),
+('Assam Grocers', 'Assam', '0361-555-7890'),
+('Patna Bazaar', 'Bihar', '0612-555-1010'),
+('Raipur Essentials', 'Chhattisgarh', '0771-555-2020'),
+('Panaji Plaza', 'Goa', '0832-555-3030'),
+('Ahmedabad Market', 'Gujarat', '079-555-4040'),
+('Chandigarh Mart', 'Chandigarh', '0172-555-5050'),
+('Healthy Himachal', 'Himachal Pradesh', '0177-555-6060'),
+('Jammu Bazaar', 'Jammu & Kashmir', '0191-555-7070'),
+('Ranchi Grocers', 'Jharkhand', '0651-555-8080'),
+('Bengaluru Organics', 'Karnataka', '080-555-9090'),
+('Thiruvananthapuram Fresh', 'Kerala', '0471-555-1010'),
+('Bhopal Bazaar', 'Madhya Pradesh', '0755-555-1111'),
+('Mumbai Market', 'Maharashtra', '022-555-1212'),
+('Imphal Fresh', 'Manipur', '0385-555-1313'),
+('Shillong Mart', 'Meghalaya', '0364-555-1414'),
+('Aizawl Essentials', 'Mizoram', '0389-555-1515'),
+('Dimapur Grocers', 'Nagaland', '03862-555-1616'),
+('Bhubaneswar Mart', 'Odisha', '0674-555-1717'),
+('Jaipur Organics', 'Rajasthan', '0141-555-1818'),
+('Gangtok Bazaar', 'Sikkim', '03592-555-1919'),
+('Chennai Market', 'Tamil Nadu', '044-555-2020'),
+('Hyderabad Mart', 'Telangana', '040-555-2121'),
+('Agartala Bazaar', 'Tripura', '0381-555-2222'),
+('Dehradun Grocers', 'Uttarakhand', '0135-555-2323'),
+('Lucknow Market', 'Uttar Pradesh', '0522-555-2424'),
+('Kolkata Essentials', 'West Bengal', '033-555-2525'),
+('Port Blair Bazaar', 'Andaman & Nicobar Islands', '03192-555-2626'),
+('Daman Mart', 'Daman & Diu', '0260-555-2727'),
+('Silvassa Essentials', 'Dadra & Nagar Haveli', '0260-555-2828'),
+('Delhi Grocers', 'Delhi', '011-555-2929'),
+('Leh Bazaar', 'Ladakh', '01982-555-3030'),
+('Kavaratti Mart', 'Lakshadweep', '04896-555-3131'),
+('Puducherry Market', 'Puducherry', '0413-555-3232');
+
 
 -- Customer
 
@@ -37,16 +63,17 @@ phone varchar(15) unique not null);
 
 -- Insert dummy data into the 'customer' table
 INSERT INTO customer (first_name, last_name, email, phone) VALUES
-('John', 'Doe', 'john.doe@example.com', '217-555-1111'),
-('Jane', 'Smith', 'jane.smith@example.com', '708-555-2222'),
-('Michael', 'Brown', 'michael.brown@example.com', '608-555-3333'),
-('Emily', 'Johnson', 'emily.johnson@example.com', '312-555-4444'),
-('David', 'Williams', 'david.williams@example.com', '847-555-5555'),
-('Sophia', 'Garcia', 'sophia.garcia@example.com', '414-555-6666'),
-('James', 'Martinez', 'james.martinez@example.com', '630-555-7777'),
-('Olivia', 'Davis', 'olivia.davis@example.com', '262-555-8888'),
-('Daniel', 'Lopez', 'daniel.lopez@example.com', '815-555-9999'),
-('Isabella', 'Wilson', 'isabella.wilson@example.com', '309-555-1010');
+('Mukesh', 'Ambani', 'mukesh.ambani@example.in', '022-555-1111'),
+('Nita', 'Ambani', 'nita.ambani@example.in', '022-555-2222'),
+('Gautam', 'Adani', 'gautam.adani@example.in', '079-555-3333'),
+('Roshni', 'Nadar', 'roshni.nadar@example.in', '011-555-4444'),
+('Ratan', 'Tata', 'ratan.tata@example.in', '022-555-5555'),
+('Kiran', 'Mazumdar-Shaw', 'kiran.mazumdar@example.in', '080-555-6666'),
+('Anil', 'Agarwal', 'anil.agarwal@example.in', '011-555-7777'),
+('Lakshmi', 'Mittal', 'lakshmi.mittal@example.in', '079-555-8888'),
+('Shiv', 'Nadar', 'shiv.nadar@example.in', '044-555-9999'),
+('Uday', 'Kotak', 'uday.kotak@example.in', '022-555-1010');
+
 
 -- Supplier
 CREATE TABLE supplier(
@@ -85,16 +112,17 @@ constraint store_employs_employees foreign key (store_id) references store(store
 
 -- Insert dummy data into the 'employee' table
 INSERT INTO employee (first_name, last_name, hire_date, post, email, phone, store_id) VALUES
-('Alex', 'Turner', '2020-05-15', 'Cashier', 'alex.turner@example.com', '217-555-1234', 1),
-('Maria', 'Clark', '2019-11-20', 'Manager', 'maria.clark@example.com', '708-555-2345', 2),
-('Chris', 'Evans', '2021-02-10', 'Stock Clerk', 'chris.evans@example.com', '608-555-3456', 3),
-('Lisa', 'Harris', '2018-06-25', 'Cashier', 'lisa.harris@example.com', '312-555-4567', 1),
-('Emma', 'Scott', '2022-09-01', 'Sales Associate', 'emma.scott@example.com', '847-555-5678', 4),
-('Robert', 'Taylor', '2017-04-18', 'Assistant Manager', 'robert.taylor@example.com', '414-555-6789', 2),
-('Sophia', 'Baker', '2023-03-12', 'Store Manager', 'sophia.baker@example.com', '630-555-7890', 5),
-('Ethan', 'Hill', '2021-08-30', 'Security', 'ethan.hill@example.com', '262-555-8901', 6),
-('Mia', 'Adams', '2020-12-15', 'Cashier', 'mia.adams@example.com', '815-555-9012', 7),
-('James', 'Green', '2019-07-05', 'Stock Clerk', 'james.green@example.com', '309-555-0123', 8);
+('Aarav', 'Sharma', 'aarav.sharma@example.in', '022-555-1111'),
+('Ananya', 'Verma', 'ananya.verma@example.in', '033-555-2222'),
+('Vihaan', 'Patel', 'vihaan.patel@example.in', '079-555-3333'),
+('Isha', 'Reddy', 'isha.reddy@example.in', '040-555-4444'),
+('Arjun', 'Chopra', 'arjun.chopra@example.in', '011-555-5555'),
+('Sanya', 'Desai', 'sanya.desai@example.in', '044-555-6666'),
+('Rohan', 'Mehta', 'rohan.mehta@example.in', '080-555-7777'),
+('Diya', 'Singh', 'diya.singh@example.in', '0172-555-8888'),
+('Karan', 'Jain', 'karan.jain@example.in', '0522-555-9999'),
+('Myra', 'Malhotra', 'myra.malhotra@example.in', '0471-555-1010');
+
 
 -- Department
 
