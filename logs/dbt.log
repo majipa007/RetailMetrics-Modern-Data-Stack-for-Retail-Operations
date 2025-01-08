@@ -1,0 +1,197 @@
+[0m16:03:33.956299 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9bf05d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9bf05c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9bf04910>]}
+
+
+============================== 16:03:33.960907 | 18cfeb92-7d86-41fa-9c17-9ed220e0e130 ==============================
+[0m16:03:33.960907 [info ] [MainThread]: Running with dbt=1.9.0-b4
+[0m16:03:33.961447 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init retail_dbt_project', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:03:33.975547 [debug] [MainThread]: Starter project path: /home/sukuna/miniconda3/envs/data/lib/python3.11/site-packages/dbt/include/starter_project
+[0m16:03:33.981302 [info ] [MainThread]: 
+Your new dbt project "retail_dbt_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:03:33.982430 [info ] [MainThread]: Setting up your profile.
+[0m16:04:58.557999 [info ] [MainThread]: Profile retail_dbt_project written to /home/sukuna/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m16:04:58.563371 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9fda4ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9bef3f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x730c9bef3850>]}
+[0m16:04:58.566001 [debug] [MainThread]: Flushing usage events
+[0m16:04:59.784067 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:06:39.292379 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721390113b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721390116310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721390113ad0>]}
+
+
+============================== 16:06:39.294891 | 25ed4d09-cd30-45c1-aa34-0b5034b7f530 ==============================
+[0m16:06:39.294891 [info ] [MainThread]: Running with dbt=1.9.0-b4
+[0m16:06:39.295404 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m16:06:39.305986 [info ] [MainThread]: dbt version: 1.9.0-b4
+[0m16:06:39.306361 [info ] [MainThread]: python version: 3.11.0
+[0m16:06:39.306709 [info ] [MainThread]: python path: /home/sukuna/miniconda3/envs/data/bin/python
+[0m16:06:39.307044 [info ] [MainThread]: os info: Linux-6.8.0-51-generic-x86_64-with-glibc2.39
+[0m16:06:39.350054 [info ] [MainThread]: Using profiles dir at /home/sukuna/.dbt
+[0m16:06:39.350481 [info ] [MainThread]: Using profiles.yml file at /home/sukuna/.dbt/profiles.yml
+[0m16:06:39.350808 [info ] [MainThread]: Using dbt_project.yml file at /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/dbt_project.yml
+[0m16:06:39.351211 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m16:06:39.351964 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7213903d1d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721393fa4ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x721390112b10>]}
+[0m16:06:39.352350 [debug] [MainThread]: Flushing usage events
+[0m16:06:40.535839 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:07:39.417838 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad2d51490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad54a8610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad2d51e50>]}
+
+
+============================== 16:07:39.420544 | e45d698f-5bd8-46b6-99d3-d530cdbbda33 ==============================
+[0m16:07:39.420544 [info ] [MainThread]: Running with dbt=1.9.1
+[0m16:07:39.421164 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'log_path': 'logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt debug', 'send_anonymous_usage_stats': 'True'}
+[0m16:07:39.427832 [info ] [MainThread]: dbt version: 1.9.1
+[0m16:07:39.428293 [info ] [MainThread]: python version: 3.11.0
+[0m16:07:39.428669 [info ] [MainThread]: python path: /home/sukuna/miniconda3/envs/data/bin/python
+[0m16:07:39.429029 [info ] [MainThread]: os info: Linux-6.8.0-51-generic-x86_64-with-glibc2.39
+[0m16:07:39.483094 [info ] [MainThread]: Using profiles dir at /home/sukuna/.dbt
+[0m16:07:39.483567 [info ] [MainThread]: Using profiles.yml file at /home/sukuna/.dbt/profiles.yml
+[0m16:07:39.483965 [info ] [MainThread]: Using dbt_project.yml file at /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/dbt_project.yml
+[0m16:07:39.484415 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m16:07:39.485351 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.11279312, "process_in_blocks": "0", "process_kernel_time": 0.13739, "process_mem_max_rss": "102096", "process_out_blocks": "8", "process_user_time": 1.161847}
+[0m16:07:39.485905 [debug] [MainThread]: Command `dbt debug` failed at 16:07:39.485812 after 0.11 seconds
+[0m16:07:39.486320 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad6a9cb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad299a5d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782ad2d51490>]}
+[0m16:07:39.486722 [debug] [MainThread]: Flushing usage events
+[0m16:07:40.752860 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:10:07.972945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c29d1610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c29d3c10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c29d0850>]}
+
+
+============================== 16:10:07.975334 | 9d5b703d-f097-4161-a019-d1dec3387f05 ==============================
+[0m16:10:07.975334 [info ] [MainThread]: Running with dbt=1.9.1
+[0m16:10:07.975838 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': '/home/sukuna/.dbt', 'log_path': 'logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:10:07.981799 [info ] [MainThread]: dbt version: 1.9.1
+[0m16:10:07.982223 [info ] [MainThread]: python version: 3.11.0
+[0m16:10:07.982573 [info ] [MainThread]: python path: /home/sukuna/miniconda3/envs/data/bin/python
+[0m16:10:07.982898 [info ] [MainThread]: os info: Linux-6.8.0-51-generic-x86_64-with-glibc2.39
+[0m16:10:08.031321 [info ] [MainThread]: Using profiles dir at /home/sukuna/.dbt
+[0m16:10:08.031759 [info ] [MainThread]: Using profiles.yml file at /home/sukuna/.dbt/profiles.yml
+[0m16:10:08.032092 [info ] [MainThread]: Using dbt_project.yml file at /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/dbt_project.yml
+[0m16:10:08.032491 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m16:10:08.033260 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.10238698, "process_in_blocks": "0", "process_kernel_time": 0.144428, "process_mem_max_rss": "102148", "process_out_blocks": "8", "process_user_time": 1.246068}
+[0m16:10:08.033763 [debug] [MainThread]: Command `dbt debug` failed at 16:10:08.033675 after 0.10 seconds
+[0m16:10:08.034147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c2a24e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c699cb90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7bb5c69cfd10>]}
+[0m16:10:08.034547 [debug] [MainThread]: Flushing usage events
+[0m16:10:09.262059 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:12:14.357489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7b7915d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7b793b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7b790750>]}
+
+
+============================== 16:12:14.364096 | 4e349afc-6d52-4d0d-80e0-e4adb66678c6 ==============================
+[0m16:12:14.364096 [info ] [MainThread]: Running with dbt=1.9.1
+[0m16:12:14.365466 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt debug', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m16:12:14.391132 [info ] [MainThread]: dbt version: 1.9.1
+[0m16:12:14.392258 [info ] [MainThread]: python version: 3.11.0
+[0m16:12:14.393245 [info ] [MainThread]: python path: /home/sukuna/miniconda3/envs/data/bin/python
+[0m16:12:14.394161 [info ] [MainThread]: os info: Linux-6.8.0-51-generic-x86_64-with-glibc2.39
+[0m16:12:14.596483 [info ] [MainThread]: Using profiles dir at /home/sukuna/.dbt
+[0m16:12:14.598228 [info ] [MainThread]: Using profiles.yml file at /home/sukuna/.dbt/profiles.yml
+[0m16:12:14.599663 [info ] [MainThread]: Using dbt_project.yml file at /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/dbt_project.yml
+[0m16:12:14.601356 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m16:12:14.604342 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.37612122, "process_in_blocks": "71296", "process_kernel_time": 0.524921, "process_mem_max_rss": "101536", "process_out_blocks": "16", "process_user_time": 3.016296}
+[0m16:12:14.606142 [debug] [MainThread]: Command `dbt debug` failed at 16:12:14.605781 after 0.38 seconds
+[0m16:12:14.607499 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7f7a0b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7b797dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x70ec7b89c590>]}
+[0m16:12:14.608881 [debug] [MainThread]: Flushing usage events
+[0m16:12:15.816757 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:14:46.297949 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ee94a3910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ee94a3690>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ee94a1fd0>]}
+
+
+============================== 16:14:46.300292 | 2297b35b-aff9-4faf-91a7-0b4c886a96ed ==============================
+[0m16:14:46.300292 [info ] [MainThread]: Running with dbt=1.9.1
+[0m16:14:46.300797 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': '/home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m16:14:46.306662 [info ] [MainThread]: dbt version: 1.9.1
+[0m16:14:46.307101 [info ] [MainThread]: python version: 3.11.0
+[0m16:14:46.307480 [info ] [MainThread]: python path: /home/sukuna/miniconda3/envs/data/bin/python
+[0m16:14:46.307828 [info ] [MainThread]: os info: Linux-6.8.0-51-generic-x86_64-with-glibc2.39
+[0m16:14:46.366986 [info ] [MainThread]: Using profiles dir at /home/sukuna/.dbt
+[0m16:14:46.367782 [info ] [MainThread]: Using profiles.yml file at /home/sukuna/.dbt/profiles.yml
+[0m16:14:46.368349 [info ] [MainThread]: Using dbt_project.yml file at /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/dbt_project.yml
+[0m16:14:46.371899 [info ] [MainThread]: adapter type: postgres
+[0m16:14:46.372544 [info ] [MainThread]: adapter version: 1.9.0
+[0m16:14:46.463525 [info ] [MainThread]: Configuration:
+[0m16:14:46.463963 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:14:46.464316 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m16:14:46.464659 [info ] [MainThread]: Required dependencies:
+[0m16:14:46.465004 [debug] [MainThread]: Executing "git --help"
+[0m16:14:46.467102 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:14:46.467490 [debug] [MainThread]: STDERR: "b''"
+[0m16:14:46.467786 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:14:46.468104 [info ] [MainThread]: Connection:
+[0m16:14:46.468421 [info ] [MainThread]:   host: localhost
+[0m16:14:46.468718 [info ] [MainThread]:   port: 5000
+[0m16:14:46.469024 [info ] [MainThread]:   user: database
+[0m16:14:46.469317 [info ] [MainThread]:   database: database
+[0m16:14:46.469611 [info ] [MainThread]:   schema: sales_data_mart
+[0m16:14:46.469902 [info ] [MainThread]:   connect_timeout: 10
+[0m16:14:46.470216 [info ] [MainThread]:   role: None
+[0m16:14:46.470546 [info ] [MainThread]:   search_path: None
+[0m16:14:46.470854 [info ] [MainThread]:   keepalives_idle: 0
+[0m16:14:46.471185 [info ] [MainThread]:   sslmode: None
+[0m16:14:46.471496 [info ] [MainThread]:   sslcert: None
+[0m16:14:46.471817 [info ] [MainThread]:   sslkey: None
+[0m16:14:46.472154 [info ] [MainThread]:   sslrootcert: None
+[0m16:14:46.472471 [info ] [MainThread]:   application_name: dbt
+[0m16:14:46.472804 [info ] [MainThread]:   retries: 1
+[0m16:14:46.473240 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m16:14:46.543374 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m16:14:46.573300 [debug] [MainThread]: Using postgres connection "debug"
+[0m16:14:46.573695 [debug] [MainThread]: On debug: select 1 as id
+[0m16:14:46.574019 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:14:46.598338 [debug] [MainThread]: SQL status: SELECT 1 in 0.024 seconds
+[0m16:14:46.599272 [debug] [MainThread]: On debug: Close
+[0m16:14:46.599672 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:14:46.600070 [info ] [MainThread]: [32mAll checks passed![0m
+[0m16:14:46.600969 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.34903803, "process_in_blocks": "7752", "process_kernel_time": 0.204997, "process_mem_max_rss": "111452", "process_out_blocks": "24", "process_user_time": 1.587976}
+[0m16:14:46.601534 [debug] [MainThread]: Command `dbt debug` succeeded at 16:14:46.601431 after 0.35 seconds
+[0m16:14:46.601990 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:14:46.602607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748eed49cb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748ee92cbad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x748eed4a4290>]}
+[0m16:14:46.603296 [debug] [MainThread]: Flushing usage events
+[0m16:14:47.874368 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:15:11.425293 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb3b93810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb3b93610>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb3b920d0>]}
+
+
+============================== 16:15:11.427638 | aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f ==============================
+[0m16:15:11.427638 [info ] [MainThread]: Running with dbt=1.9.1
+[0m16:15:11.428174 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/sukuna/.dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': '/home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/logs', 'debug': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'invocation_command': 'dbt test', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:15:11.606981 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb34c1f50>]}
+[0m16:15:11.736893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb5b7bb90>]}
+[0m16:15:11.739076 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m16:15:11.923299 [debug] [MainThread]: checksum: 5e8d1596cf4eae33c11286bbb248a722d21b9f00d8a7ced8137c642517055418, vars: {}, profile: , target: , version: 1.9.1
+[0m16:15:11.923984 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m16:15:11.924398 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb32ba050>]}
+[0m16:15:12.677277 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.retail_dbt_project.example
+[0m16:15:12.681275 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb33523d0>]}
+[0m16:15:12.709734 [debug] [MainThread]: Wrote artifact WritableManifest to /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/target/manifest.json
+[0m16:15:12.713150 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/target/semantic_manifest.json
+[0m16:15:12.737624 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb2d9c4d0>]}
+[0m16:15:12.738126 [info ] [MainThread]: Found 431 macros
+[0m16:15:12.738493 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'aafbf76d-0a1d-4422-b4f2-3bb0c6cc998f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb2f8d290>]}
+[0m16:15:12.740337 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m16:15:12.741220 [debug] [MainThread]: Command end result
+[0m16:15:12.757330 [debug] [MainThread]: Wrote artifact WritableManifest to /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/target/manifest.json
+[0m16:15:12.758560 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/target/semantic_manifest.json
+[0m16:15:12.761023 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/sukuna/Documents/PROJECTS/Retail_Analytics_and_Reporting/target/run_results.json
+[0m16:15:12.761843 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 1.3793975, "process_in_blocks": "10384", "process_kernel_time": 0.272644, "process_mem_max_rss": "110632", "process_out_blocks": "2472", "process_user_time": 2.483651}
+[0m16:15:12.762345 [debug] [MainThread]: Command `dbt test` succeeded at 16:15:12.762258 after 1.38 seconds
+[0m16:15:12.762707 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb3ea0850>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb7ba4ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d2eb2f38110>]}
+[0m16:15:12.763110 [debug] [MainThread]: Flushing usage events
+[0m16:15:13.973399 [debug] [MainThread]: An error was encountered while trying to flush usage events
