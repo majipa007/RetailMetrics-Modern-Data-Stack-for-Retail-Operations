@@ -234,38 +234,29 @@ store(store_id)
 -- Insert dummy data into the 'department' table
 INSERT INTO department (department_name, store_id) VALUES
 ('Groceries', 1),
-'Home Goods', 1),
+('Home Goods', 1),
 ('Electronics', 1),
-
 ('Produce', 2),
 ('Bakery', 2),
 ('Dairy', 2),
-
 ('Health & Beauty', 3),
 ('Household', 3),
-
 ('Clothing', 4),
 ('Accessories', 4),
-
 ('Frozen Foods', 5),
 ('Bakery', 5),
 ('Meat & Seafood', 5),
-
 ('Pharmacy', 6),
 ('Health & Beauty', 6),
 ('Household', 6),
-
 ('Groceries', 7),
 ('Snacks', 7),
 ('Beverages', 7),
-
 ('Electronics', 8),
 ('Clothing', 8),
-
 ('Produce', 9),
 ('Meat & Seafood', 9),
 ('Dairy', 9),
-
 ('Household', 10),
 ('Health & Beauty', 10);
 
@@ -276,7 +267,7 @@ store_id int,
 customer_id int, 
 employee_id int, 
 sale_date date default current_date, 
-total_amount decimal(5, 2),
+total_amount decimal(15, 2),
 constraint store_processes_sales
 foreign key (store_id) references store(store_id),
 constraint employee_handles_sales

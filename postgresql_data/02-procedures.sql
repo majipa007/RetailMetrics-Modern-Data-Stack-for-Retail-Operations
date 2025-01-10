@@ -93,4 +93,3 @@ $$;
 -- 2, --p_product_id
 -- 100 --p_quantity
 -- );
-select * from inventory;
