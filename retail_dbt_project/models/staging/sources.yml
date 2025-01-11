@@ -13,13 +13,17 @@ sources:
 
 models:
   - name: staging_customers
-    description: "Dimension table with customer info"
+    description: "Staging table with all customer info"
     columns:
       - name: customer_id
         description: "Unique identifier for each customer"
         tests:
           - not_null
           - unique
+      - name: first_name
+        description: "First name of the customer"
+        tests:
+          - not_null
       - name: last_name
         description: "Last name of the customer"
         tests:
@@ -35,3 +39,104 @@ models:
           - not_null
           - unique
 
+  - name: staging_stores
+    description: "staging table for source data"
+    columns:
+      - name: store_id
+        description: "Unique identifier for store"
+        tests:
+          - not_null
+          - unique
+      - name: store_name
+        description: "Name of the store"
+        tests:
+          - not_null
+      - name: address
+        description: "Address of the store"
+        tests:
+          - not_null
+      - name: phone
+        description: "Contact no of the store"
+        tests:
+          - not_null
+
+  - name: staging_employees
+    description: "staging table for employee data"
+    columns:
+      - name: employee_id
+        description: "Unique identifier for each employee"
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "First name of the customer"
+        tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the customer"
+        tests:
+          - not_null
+      - name: hire_date
+        description: "Hire Date of the employee"
+        tests:
+          - not_null
+      - name: post
+        description: "Post of the employee"
+        tests:
+          - not_null
+      - name: email
+        description: "Email-address of the employee"
+        tests:
+          - not_null
+          - unique
+      - name: phone
+        description: "Phone Number of the employee"
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: "Respective store of the employee"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging_stores')  # The table containing the store keys
+              field: store_id
+
+  - name: staging_sale
+    description: "staging table for sale data"
+    columns:
+      - name: sale_id
+        description: "Unique identifier for each sales record"
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: "Store from which the sale has been done"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging_stores')  # The table containing the store keys
+              field: store_id
+      - name: customer_id
+        description: "Customer who made the purchase"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging_customers')  # The table containing the store keys
+              field: customer_id
+      - name: employee_id
+        description: "Employee who made the purchase"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('staging_employees')  # The table containing the store keys
+              field: employee_id
+      - name: sale_date
+        description: "Date of sales"
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Total expenditure of the transaction"
+        tests:
+          - not_null
+          - unique

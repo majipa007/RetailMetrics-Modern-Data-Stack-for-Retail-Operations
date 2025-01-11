@@ -1,5 +1,5 @@
 -- Staging area
-create schema if not exists staging_schema;
+--create schema if not exists staging_schema;
 
 ---- staging table store
 --CREATE TABLE staging_schema.staging_store (
@@ -46,7 +46,7 @@ create schema if not exists staging_schema;
 
 
 -- Data mart
-create schema if not exists sales_data_mart;
+--create schema if not exists sales_data_mart;
 
 
 ---- dim table store
