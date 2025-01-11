@@ -9,3 +9,29 @@ sources:
       - name: store
       - name: customer
       - name: employee
+
+
+models:
+  - name: staging_customers
+    description: "Dimension table with customer info"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: last_name
+        description: "Last name of the customer"
+        tests:
+          - not_null
+      - name: email
+        description: "Email-address of the customer"
+        tests:
+          - not_null
+          - unique
+      - name: phone
+        description: "Phone Number of the customer"
+        tests:
+          - not_null
+          - unique
+
