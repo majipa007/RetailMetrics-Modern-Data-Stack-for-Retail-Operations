@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: retail_shop
+    schema: retail_shop
+    database: database
+    tables:
+      - name: sale
+      - name: store
+      - name: customer
+      - name: employee
