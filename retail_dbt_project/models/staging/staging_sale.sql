@@ -10,6 +10,7 @@ config(
 with source_table as (
      select *
      from {{ source('retail_shop', 'sale')}}
+     where EXTRACT(month from sale_date) = 1
 )
 
 select *

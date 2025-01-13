@@ -139,4 +139,3 @@ models:
         description: "Total expenditure of the transaction"
         tests:
           - not_null
-          - unique

@@ -1,0 +1,12 @@
+ version: 2
+
+sources:
+   - name: sales_data_mart_staging_schema
+     schema: sales_data_mart_staging_schema
+     database: database
+     tables:
+       - name: staging_sale
+       - name: staging_stores
+       - name: staging_employees
+       - name: staging_customers
+
