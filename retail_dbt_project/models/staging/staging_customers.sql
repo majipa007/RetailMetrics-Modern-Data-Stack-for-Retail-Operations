@@ -2,7 +2,7 @@
     config (materialized = 'table',
         schema = 'staging_schema',
         unique_key = 'customer_id'
-                )
+    )
 }}
 
 with

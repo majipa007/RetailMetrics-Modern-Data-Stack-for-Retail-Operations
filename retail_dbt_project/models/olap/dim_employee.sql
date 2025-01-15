@@ -2,7 +2,7 @@
 config(
     materialized = 'incremental',
     schema = 'production_schema',
-    unique_id = 'employee_id'
+    unique_key = 'employee_id'
 )
 }}
 

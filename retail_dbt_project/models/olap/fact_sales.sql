@@ -2,13 +2,13 @@
     config(
         materialized = "incremental",
         schema = "production_schema",
-        unique_id = "sale_id"
+        unique_key = "sale_id"
     )
 }}
 
 with staging_data as(
     select
-        sale_id serial ,
+        sale_id,
         store_id,
         customer_id,
         employee_id,

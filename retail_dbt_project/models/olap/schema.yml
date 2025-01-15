@@ -10,3 +10,156 @@ sources:
        - name: staging_employees
        - name: staging_customers
 
+
+models:
+  - name: dim_customers
+    description: "dimension table with all historical customer info"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "First name of the customer"
+        tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the customer"
+        tests:
+          - not_null
+      - name: email
+        description: "Email-address of the customer"
+        tests:
+          - not_null
+          - unique
+      - name: phone
+        description: "Phone Number of the customer"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_stores
+    description: "Dimension table for store data"
+    columns:
+      - name: store_id
+        description: "Unique identifier for store"
+        tests:
+          - not_null
+          - unique
+      - name: store_name
+        description: "Name of the store"
+        tests:
+          - not_null
+      - name: address
+        description: "Address of the store"
+        tests:
+          - not_null
+      - name: phone
+        description: "Contact no of the store"
+        tests:
+          - not_null
+
+
+  - name: dim_employees
+    description: "Dimensional table for historical employee data"
+    columns:
+      - name: employee_id
+        description: "Unique identifier for each employee"
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "First name of the customer"
+        tests:
+          - not_null
+      - name: last_name
+        description: "Last name of the customer"
+        tests:
+          - not_null
+      - name: hire_date
+        description: "Hire Date of the employee"
+        tests:
+          - not_null
+      - name: post
+        description: "Post of the employee"
+        tests:
+          - not_null
+      - name: email
+        description: "Email-address of the employee"
+        tests:
+          - not_null
+          - unique
+      - name: phone
+        description: "Phone Number of the employee"
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: "Respective store of the employee"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_stores')  # The table containing the store keys
+              field: store_id
+  - name: dim_date
+    description: "Dimensional date table"
+    columns:
+      - name: date_id
+        description: "Date id that links with the fact table"
+        test:
+          - not_null
+          - unique
+      - name: day
+        description: "day of the month"
+        test:
+            - not_null
+      - name: month
+        description: "month no of the year"
+        test:
+          - not_null
+      - name: year
+        description: "Year of transaction"
+        test:
+          - not_null
+
+  - name: fact_sales
+    description: "Fact table for all sales data"
+    columns:
+      - name: sale_id
+        description: "Unique identifier for each sales record"
+        tests:
+          - not_null
+          - unique
+      - name: store_id
+        description: "Store from which the sale has been done"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_stores')  # The table containing the store keys
+              field: store_id
+      - name: customer_id
+        description: "Customer who made the purchase"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')  # The table containing the store keys
+              field: customer_id
+      - name: employee_id
+        description: "Employee who made the purchase"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_employees')  # The table containing the store keys
+              field: employee_id
+      - name: date_id
+        description: "Date of sales"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_id
+      - name: total_amount
+        description: "Total expenditure of the transaction"
+        tests:
+          - not_null
