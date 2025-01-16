@@ -4,11 +4,13 @@ services:
     image: sales-airflow:latest
     volumes:
       - ./airflow:/opt/airflow
+      - ./retail_dbt_project:/opt/airflow/retail_dbt_project
     ports:
       - "8080:8080"
     user: "${UID}:${GID}"
     environment:
       - AIRFLOW_UID=${UID}
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://database:secret@retail_database:5432/database
     command: >
       bash -c "
       mkdir -p /opt/airflow/logs /opt/airflow/dags /opt/airflow/plugins &&
@@ -23,13 +25,11 @@ services:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: database
     ports:
-      - "5000:5432" 
+      - "5000:5432"
     volumes:
       - ./postgresql_data:/docker-entrypoint-initdb.d
       - ./database:/var/lib/postgresql/data
     restart: always
 
-
 volumes:
-  postgres: 
-
+  postgres:

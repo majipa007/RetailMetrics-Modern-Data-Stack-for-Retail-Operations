@@ -8,3 +8,9 @@ RUN apt-get update && \
 
 USER airflow
 
+RUN pip install --no-cache-dir \
+    dbt-core \
+    dbt-postgres \
+    pandas \
+    psycopg2-binary \
+    apache-airflow-providers-postgres
