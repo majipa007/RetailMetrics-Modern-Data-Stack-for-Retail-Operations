@@ -10,13 +10,19 @@ services:
     user: "${UID}:${GID}"
     environment:
       - AIRFLOW_UID=${UID}
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://database:secret@retail_database:5432/database
     command: >
       bash -c "
       mkdir -p /opt/airflow/logs /opt/airflow/dags /opt/airflow/plugins &&
       chmod -R 777 /opt/airflow &&
-      airflow standalone
+      airflow webserver & 
+      airflow scheduler
       "
+    depends_on:
+      - postgres
+
   postgres:
     container_name: retail_database
     image: postgres:latest
