@@ -1,0 +1,12 @@
+retail_dbt_project:
+  outputs:
+    dev:
+      dbname: database
+      host: postgres
+      pass: secret
+      port: 5432
+      schema: sales_data_mart
+      threads: 4
+      type: postgres
+      user: database
+  target: dev

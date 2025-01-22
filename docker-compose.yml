@@ -5,6 +5,7 @@ services:
     volumes:
       - ./airflow:/opt/airflow
       - ./retail_dbt_project:/opt/airflow/retail_dbt_project
+      - ./retail_dbt_project/.dbt:/root/.dbt
     ports:
       - "8080:8080"
     user: "${UID}:${GID}"

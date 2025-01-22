@@ -11,7 +11,7 @@ default_args={
     "email": ["sulavstha007@gmail.com"],
     "email_on_failure": True,
     "email_on_retry": False,
-    "retries": 1,
+    "retries": 0,
     "retry_delay": timedelta(minutes=5),
     # 'queue': 'bash_queue',
     # 'pool': 'backfill',
@@ -47,8 +47,20 @@ with DAG(
         bash_command='cd /opt/airflow/retail_dbt_project && dbt debug --config-dir'
     )
 
+    # DBT debug task
+    dbt_run_staging = BashOperator(
+        task_id='dbt_run_staging',
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt run --models staging'
+    )
+
+    # DBT debug task
+    dbt_test_staging = BashOperator(
+        task_id='dbt_test_staging',
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt test --models staging'
+    )
+
     end = DummyOperator(
         task_id='end'
     )
 
-    start >> dbt_debug >> end
+    start >> dbt_debug >> dbt_run_staging >> end
