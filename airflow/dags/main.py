@@ -59,8 +59,20 @@ with DAG(
         bash_command='cd /opt/airflow/retail_dbt_project && dbt test --models staging'
     )
 
+    # DBT debug task
+    dbt_run_production = BashOperator(
+        task_id='dbt_run_production',
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt run --models staging'
+    )
+
+    # DBT debug task
+    dbt_test_production = BashOperator(
+        task_id='dbt_test_production',
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt test --models staging'
+    )
+
     end = DummyOperator(
         task_id='end'
     )
 
-    start >> dbt_debug >> dbt_run_staging >> end
+    start >> dbt_debug >> dbt_run_staging >> dbt_test_staging >> dbt_run_production >> dbt_test_production>> end
