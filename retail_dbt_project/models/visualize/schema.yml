@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: sales_data_mart_staging_schema
+    description: "Source tables from the staging schema."
+    schema: sales_data_mart_staging_schema
+    database: database  # Use the actual database name from your profile
+    tables:
+      - name: fact_sales
+      - name: dim_stores
+      - name: dim_employee
+      - name: dim_customers
+      - name: dim_date
+
+models:
+  - name: sales_summary
+    description: "Aggregated sales summary table joining fact and dimension tables."
+    columns:
+      - name: sale_id
+        tests:
+          - unique
+          - not_null
+      - name: sale_date
+        tests:
+          - not_null
+      - name: total_amount
+        tests:
+          - not_null
