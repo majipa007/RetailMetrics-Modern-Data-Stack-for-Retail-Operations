@@ -8,8 +8,8 @@ from airflow.operators.dummy import DummyOperator
 
 default_args={
     "depends_on_past": False,
-    "email": ["sulavstha007@gmail.com"],
-    "email_on_failure": True,
+    # "email": ["sulavstha007@gmail.com"],
+    "email_on_failure": False,
     "email_on_retry": False,
     "retries": 0,
     "retry_delay": timedelta(minutes=5),
@@ -29,13 +29,13 @@ default_args={
 }
 
 with DAG(
-    dag_id="main",
+    dag_id="ETL",
     default_args = default_args,
-    description='full etl to viz pipeline',
+    description='The ETL pipeline',
     schedule=timedelta(days=1),
     start_date = datetime(2025, 1, 1),
     catchup=False,
-    tags = ["main"]
+    tags = ["ETL"]
 ) as dag:
     start = DummyOperator(
         task_id = 'start'
@@ -62,13 +62,13 @@ with DAG(
     # DBT debug task
     dbt_run_production = BashOperator(
         task_id='dbt_run_production',
-        bash_command='cd /opt/airflow/retail_dbt_project && dbt run --models staging'
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt run --models production'
     )
 
     # DBT debug task
     dbt_test_production = BashOperator(
         task_id='dbt_test_production',
-        bash_command='cd /opt/airflow/retail_dbt_project && dbt test --models staging'
+        bash_command='cd /opt/airflow/retail_dbt_project && dbt test --models production'
     )
 
     end = DummyOperator(
