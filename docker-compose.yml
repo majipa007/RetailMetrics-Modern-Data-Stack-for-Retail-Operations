@@ -36,7 +36,5 @@ services:
     volumes:
       - ./postgresql_data:/docker-entrypoint-initdb.d
       - ./database:/var/lib/postgresql/data
-    restart: always
-
 volumes:
   postgres:

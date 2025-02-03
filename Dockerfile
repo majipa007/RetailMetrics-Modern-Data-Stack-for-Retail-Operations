@@ -13,4 +13,6 @@ RUN pip install --no-cache-dir \
     dbt-postgres \
     pandas \
     psycopg2-binary \
-    apache-airflow-providers-postgres
+    apache-airflow-providers-postgres \
+    streamlit \
+    plotly

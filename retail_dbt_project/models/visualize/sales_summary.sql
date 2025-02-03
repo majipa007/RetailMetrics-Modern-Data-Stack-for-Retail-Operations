@@ -6,6 +6,7 @@
 SELECT
     sales.sale_id,
     	to_date(date.year || '-' || date.month || '-' || date.day, 'YYYY-MM-DD') as sale_date,
+    date.month as month,
     store.store_name AS store,
     customer.first_name || ' ' || customer.last_name AS customer,
     employee.first_name || ' ' || employee.last_name AS employee,
