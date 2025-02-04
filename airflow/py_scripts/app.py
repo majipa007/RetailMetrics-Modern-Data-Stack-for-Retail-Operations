@@ -6,8 +6,8 @@ import psycopg2
 
 # Database connection configuration
 DB_CONFIG = {
-    "host": "localhost",
-    "port": "5000",
+    "host": "postgres",
+    "port": "5432",
     "database": "database",
     "user": "database",
     "password": "secret"
@@ -29,6 +29,7 @@ def load_data():
         conn.close()
         print("Database connection closed.")
 
+# Note: This code below is written using Claude AI.
 
 def prepare_data(df):
     """Prepare and clean the data"""
