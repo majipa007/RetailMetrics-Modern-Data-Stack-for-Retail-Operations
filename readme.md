@@ -1,113 +1,154 @@
-# Retail Analytics and Reporting
+# Retail Data Pipeline & Visualization
 
-This project, "Retail_Analytics_and_Reporting-postgres-airflow-and-dbt", is a comprehensive system for managing and analyzing data from a network of retail shops. It integrates PostgreSQL for data storage, Apache Airflow for workflow management, and dbt (data build tool) for data transformation.
+## ✨ Table of Contents
+- [📖 Introduction](#-introduction)
+- [📊 Architecture Overview](#-architecture-overview)
+- [🔗 Frontend (HTML, CSS, JS)](#-frontend-html-css-js)
+- [🛠️ Backend (Node.js & Express)](#-backend-nodejs--express)
+- [💾 Databases (OLTP & OLAP)](#-databases-oltp--olap)
+  - [🔹 OLTP - PostgreSQL](#-oltp---postgresql)
+  - [🔹 OLAP - Data Warehouse (PostgreSQL + DBT)](#-olap---data-warehouse-postgresql--dbt)
+- [⚡ Data Pipeline (Airflow + DBT)](#-data-pipeline-airflow--dbt)
+- [📊 Visualization (Streamlit)](#-visualization-streamlit)
+- [🚀 Deployment & Running Locally](#-deployment--running-locally)
+- [💡 Future Improvements](#-future-improvements)
+- [🤝 Contributing](#-contributing)
+- [📱 Contact](#-contact)
 
-## Table of Contents
+---
 
-1. [Project Overview](#project-overview)
-2. [System Architecture](#system-architecture)
-3. [Prerequisites](#prerequisites)
-4. [Installation](#installation)
-5. [Configuration](#configuration)
-6. [Usage](#usage)
-7. [Data Flow](#data-flow)
-8. [Monitoring and Maintenance](#monitoring-and-maintenance)
-9. [Contributing](#contributing)
-10. [License](#license)
+## 📖 Introduction
+This project is a **Retail Data Pipeline & Visualization System** that processes sales and inventory data, transforms it using **DBT**, and visualizes it in **Streamlit**. The system includes **Airflow for automation**, **PostgreSQL for OLTP**, and a **data warehouse for OLAP analytics**.
 
-## Project Overview
+---
 
-This project aims to provide a robust solution for retail data management and analytics. It encompasses:
+## 📊 Architecture Overview
+### **Tech Stack:**
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js (Express)
+- **OLTP Database**: PostgreSQL
+- **OLAP Database**: PostgreSQL + DBT
+- **Data Pipeline**: Apache Airflow + DBT
+- **Visualization**: Streamlit
 
-- Data storage using PostgreSQL
-- ETL (Extract, Transform, Load) processes managed by Apache Airflow
-- Data transformation and modeling using dbt
-- Automated scheduling of data processing tasks
+### **Data Flow:**
+1. **Users interact** with the web frontend.
+2. **Sales & inventory data** is sent to the Node.js backend.
+3. **OLTP Database (PostgreSQL)** stores raw sales & inventory transactions.
+4. **Airflow & DBT** transform the data into reports.
+5. **OLAP Database (PostgreSQL + DBT)** stores aggregated data.
+6. **Streamlit fetches data** & presents dashboards.
 
-## System Architecture
+---
 
+## 🔗 Frontend (HTML, CSS, JS)
+The frontend is a **web-based dashboard** for recording sales and managing inventory.
+
+### **Features:**
+- 📈 **Record Sales** (store, customer, employee, products)
+- 📅 **Manage Inventory** (add/remove stock)
+- 🔄 **Fetch Reports**
+
+### **Running Frontend Locally:**
+Just open `index.html` in a browser or serve it via a local HTTP server.
+```bash
+npx http-server ./frontend -p 8081
 ```
-[Data Sources] -> [PostgreSQL] -> [Airflow] -> [dbt] -> [Analytics Dashboard]
+
+---
+
+## 🛠️ Backend (Node.js & Express)
+The backend **handles API requests** from the frontend and manages database operations.
+
+### **Endpoints:**
+- `/sales` → **Records sales transactions**
+- `/inventory` → **Updates inventory stock**
+
+### **Running Backend Locally:**
+```bash
+npm install  # Install dependencies
+node server.js  # Start server
+```
+Server runs on: **http://localhost:3000**
+
+---
+
+## 💾 Databases (OLTP & OLAP)
+
+### 🔹 OLTP - PostgreSQL
+- Stores raw transactional sales and inventory data.
+- **Schema:** `sales`, `customers`, `employees`, `stores`
+
+### 🔹 OLAP - Data Warehouse (PostgreSQL + DBT)
+- Aggregated reports for analysis.
+- **DBT models transform OLTP data into sales summaries.**
+
+Example DBT Model:
+```sql
+SELECT
+    month,
+    store,
+    SUM(total_amount) AS total_sales
+FROM {{ ref('sales_summary') }}
+GROUP BY month, store
+ORDER BY month;
 ```
 
-- PostgreSQL: Stores raw data from retail operations
-- Airflow: Orchestrates the entire ETL process
-- dbt: Transforms raw data into analytics-ready models
+---
 
-## Prerequisites
+## ⚡ Data Pipeline (Airflow + DBT)
 
-- Docker and Docker Compose
-- Python 3.8+
-- PostgreSQL 13+
-- Apache Airflow 2.0+
-- dbt 0.21+
+### **ETL Process:**
+1. **Extract:** Airflow pulls data from OLTP.
+2. **Transform:** DBT models clean & aggregate sales data.
+3. **Load:** Data stored in OLAP for reporting.
 
-## Installation
+---
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/majipa007/Retail_Analytics_and_Reporting-postgres-airflow-and-dbt-.git
-   cd Retail_Analytics_and_Reporting-postgres-airflow-and-dbt-
-   ```
+## 📊 Visualization (Streamlit)
+- **Dashboard:** Sales trends, store comparisons, customer insights.
+- **Filters:** Month, Store, Employee, Customer.
 
-2. Set up a virtual environment:
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+### **Running Streamlit Locally:**
+```bash
+streamlit run app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true
+```
 
-3. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+---
 
-4. Set up Docker containers:
-   ```
-   docker-compose up -d
-   ```
+## 🚀 Deployment & Running Locally
 
-## Configuration
+### **🔹 Run with Docker**
+```bash
+docker-compose up --build
+```
 
-1. Configure PostgreSQL connection in `airflow/airflow.cfg`
-2. Set up dbt profile in `~/.dbt/profiles.yml`
-3. Configure Airflow DAGs in `airflow/dags/`
-4. Set up dbt models in `dbt/models/`
+### **🔹 Access Services**
+- **Frontend:** http://localhost:8081
+- **Backend (Node.js):** http://localhost:3000
+- **Streamlit:** can be accessed via the airflow logs
+- **Airflow UI:** http://localhost:8080
 
-## Usage
+---
 
-1. Start Airflow webserver:
-   ```
-   airflow webserver --port 8080
-   ```
+## 💡 Future Improvements
+- 🔄 **Real-time Processing** with Kafka
+- 📊 **ML-based Forecasting** for sales trends
+- 🚀 **Kubernetes Deployment** for scalability
+- 🔍 **Enhanced Data Visualization**
 
-2. Start Airflow scheduler:
-   ```
-   airflow scheduler
-   ```
+---
 
-3. Access Airflow UI at `http://localhost:8080`
+## 🤝 Contributing
+We welcome contributions! Please follow these steps:
+1. **Fork the repo**
+2. **Create a new branch**
+3. **Commit changes**
+4. **Submit a PR**
 
-4. Trigger DAGs manually or let them run on schedule
+---
 
-## Data Flow
+## 📱 Contact
+💌 Email: [sulavstha007@example.com](sulavstha007@example.com)  
+💼 LinkedIn: [Sulav Shrestha](https://www.linkedin.com/in/sulav-shrestha-16b1091bb/)  
 
-1. Raw data is ingested into PostgreSQL tables
-2. Airflow DAGs trigger data extraction and loading processes
-3. dbt models transform raw data into analytics-ready formats
-4. Transformed data is loaded back into designated PostgreSQL tables
-5. Analytics dashboards can connect to these final tables for reporting
-
-## Monitoring and Maintenance
-
-- Monitor Airflow tasks through the Airflow UI
-- Check dbt model status using `dbt docs generate` and `dbt docs serve`
-- Regularly backup PostgreSQL databases
-- Keep all components (Airflow, dbt, PostgreSQL) updated to their latest stable versions
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
