@@ -7,26 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-brand">Retail Shop</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sales.html">Sales</a></li>
+            <li><a href="inventory.html" class="active">Inventory</a></li>
+            <li><a href="customer.html">Customers</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>Inventory Update Form</h1>
-        <form id="inventoryForm">
-            <div class="form-group">
-                <label for="store_id">Store ID:</label>
-                <input type="number" id="store_id" name="store_id" required>
-            </div>
-            <div class="form-group">
-                <label for="product_id">Product ID:</label>
-                <input type="number" id="product_id" name="product_id" required>
-            </div>
-            <div class="form-group">
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" required>
-            </div>
-            <button type="submit">Update Inventory</button>
-        </form>
-        <div id="response"></div>
+        <div class="form-container">
+            <h1>Inventory Update Form</h1>
+            <form id="inventoryForm">
+                <div class="form-group">
+                    <label for="store_id">Store ID:</label>
+                    <input type="number" id="store_id" name="store_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="product_id">Product ID:</label>
+                    <input type="number" id="product_id" name="product_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+                </div>
+                <button type="submit">Update Inventory</button>
+            </form>
+            <div id="response"></div>
+        </div>
     </div>
     <script src="inventory.js"></script>
 </body>
 </html>
-

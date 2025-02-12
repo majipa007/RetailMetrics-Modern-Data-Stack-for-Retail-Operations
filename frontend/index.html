@@ -1,3 +1,4 @@
+<!-- Updated index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-brand">Retail Shop</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="sales.html">Sales</a></li>
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="customer.html">Customers</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>Retail Shop Management</h1>
-        <div class="button-container">
-            <button onclick="window.location.href='sales.html'">Sales</button>
-            <button onclick="window.location.href='inventory.html'">Inventory</button>
+        <div class="welcome-section">
+            <h1>Welcome to Retail Shop Management</h1>
+            <p>Manage your retail operations efficiently with our comprehensive system.</p>
+        </div>
+        <div class="card-container">
+            <div class="card">
+                <h2>Sales Management</h2>
+                <p>Record and track sales transactions</p>
+                <button onclick="window.location.href='sales.html'" class="card-button">Go to Sales</button>
+            </div>
+            <div class="card">
+                <h2>Inventory Control</h2>
+                <p>Manage and update your inventory</p>
+                <button onclick="window.location.href='inventory.html'" class="card-button">Go to Inventory</button>
+            </div>
+            <div class="card">
+                <h2>Customer Management</h2>
+                <p>Add and manage customer information</p>
+                <button onclick="window.location.href='customer.html'" class="card-button">Manage Customers</button>
+            </div>
         </div>
     </div>
 </body>
 </html>
-
