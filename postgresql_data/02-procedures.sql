@@ -16,7 +16,7 @@ DECLARE
     v_total DECIMAL(10, 2) := 0; -- Initialize total to zero
 BEGIN
     -- Insert sale record and get sale_id
-    INSERT INTO sale (store_id, customer_id, employee_id, sale_date, total_amount)
+    INSERT INTO retail_shop.sale (store_id, customer_id, employee_id, sale_date, total_amount)
     VALUES (p_store_id, p_customer_id, p_employee_id, CURRENT_DATE, 0.00) 
     RETURNING sale_id INTO v_sale_id;
 
@@ -27,12 +27,12 @@ BEGIN
         v_quantity := (v_product->>'quantity')::INT;
 
         -- Check inventory before processing the sale item
-        IF (SELECT quantity FROM inventory WHERE store_id = p_store_id AND product_id = v_product_id) < v_quantity THEN
+        IF (SELECT quantity FROM retail_shop.inventory WHERE store_id = p_store_id AND product_id = v_product_id) < v_quantity THEN
             RAISE EXCEPTION 'Insufficient stock for product_id: %', v_product_id;
         END IF;
 
         -- Insert into sale_item
-        INSERT INTO sale_item (sale_id, product_id, quantity, price)
+        INSERT INTO retail_shop.sale_item (sale_id, product_id, quantity, price)
         VALUES (v_sale_id, v_product_id, v_quantity, (SELECT price FROM product WHERE product_id = v_product_id));
 
         -- Calculate total price for this product

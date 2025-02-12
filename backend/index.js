@@ -35,6 +35,50 @@ app.post('/inventory', async (req, res)=>{
     }
 })
 
+// Fetch list of stores
+app.get('/stores', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT store_id, store_name FROM retail_shop.store');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching stores:', err);
+        res.status(500).json({ error: 'Failed to fetch stores' });
+    }
+});
+
+// Fetch list of customers
+app.get('/customers', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT customer_id, first_name || \' \' || last_name as customer_name FROM retail_shop.customer');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching customers:', err);
+        res.status(500).json({ error: 'Failed to fetch customers'});
+    }
+});
+
+// Fetch list of employees
+app.get('/employees', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT employee_id, first_name || \' \' || last_name as employee_name FROM retail_shop.employee');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching employees:', err);
+        res.status(500).json({ error: 'Failed to fetch employees' });
+    }
+});
+
+app.get('/products', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT product_id, product_name FROM retail_shop.product');
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching products:', err);
+        res.status(500).json({ error: 'Failed to fetch products' });
+    }
+});
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

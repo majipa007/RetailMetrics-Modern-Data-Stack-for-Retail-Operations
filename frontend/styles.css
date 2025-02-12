@@ -194,3 +194,61 @@ button:hover {
         padding: 1.5rem;
     }
 }
+
+/* General Dropdown Styling */
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #3498db; /* Blue border */
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    appearance: none; /* Remove default dropdown arrow */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Dropdown container */
+.dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Custom dropdown arrow */
+.dropdown-container::after {
+    content: "▼";
+    font-size: 14px;
+    color: #3498db;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Hover effect */
+select:hover {
+    border-color: #2980b9;
+}
+
+/* Focus effect */
+select:focus {
+    outline: none;
+    border-color: #1abc9c; /* Green border when focused */
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+}
+
+/* Dropdown options */
+select option {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+}
+
+/* Style when option is selected */
+select:focus option:checked {
+    background-color: #3498db;
+    color: white;
+}
