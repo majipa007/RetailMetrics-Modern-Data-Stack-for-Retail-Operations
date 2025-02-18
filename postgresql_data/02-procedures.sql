@@ -1,9 +1,8 @@
 -- procedure for recording sale
-
-CREATE OR REPLACE PROCEDURE record_sale(
-    p_store_id INT, 
-    p_customer_id INT, 
-    p_employee_id INT, 
+CREATE OR REPLACE PROCEDURE retail_shop.record_sale(
+    p_store_id INT,
+    p_customer_id INT,
+    p_employee_id INT,
     p_product_list JSON
 )
 LANGUAGE plpgsql
@@ -13,46 +12,59 @@ DECLARE
     v_product JSON;
     v_product_id INT;
     v_quantity INT;
-    v_total DECIMAL(10, 2) := 0; -- Initialize total to zero
+    v_total DECIMAL(10, 2) := 0;
 BEGIN
-    -- Insert sale record and get sale_id
-    INSERT INTO retail_shop.sale (store_id, customer_id, employee_id, sale_date, total_amount)
-    VALUES (p_store_id, p_customer_id, p_employee_id, CURRENT_DATE, 0.00) 
-    RETURNING sale_id INTO v_sale_id;
+    BEGIN  -- Start of transaction block
+        RAISE NOTICE 'Starting sale recording with store_id: %, customer_id: %, product_list: %',
+                     p_store_id, p_customer_id, p_product_list;
 
-    -- Loop through each product in the product_list
-    FOR v_product IN SELECT * FROM json_array_elements(p_product_list)
-    LOOP
-        v_product_id := v_product->>'product_id';
-        v_quantity := (v_product->>'quantity')::INT;
+        -- Insert sale record and get sale_id
+        INSERT INTO retail_shop.sale (store_id, customer_id, employee_id, sale_date, total_amount)
+        VALUES (p_store_id, p_customer_id, p_employee_id, CURRENT_DATE, 0.00)
+        RETURNING sale_id INTO v_sale_id;
 
-        -- Check inventory before processing the sale item
-        IF (SELECT quantity FROM retail_shop.inventory WHERE store_id = p_store_id AND product_id = v_product_id) < v_quantity THEN
-            RAISE EXCEPTION 'Insufficient stock for product_id: %', v_product_id;
-        END IF;
+        RAISE NOTICE 'Created sale with ID: %', v_sale_id;
 
-        -- Insert into sale_item
-        INSERT INTO retail_shop.sale_item (sale_id, product_id, quantity, price)
-        VALUES (v_sale_id, v_product_id, v_quantity, (SELECT price FROM product WHERE product_id = v_product_id));
+        -- Loop through each product in the product_list
+        FOR v_product IN SELECT * FROM json_array_elements(p_product_list)
+        LOOP
+            v_product_id := (v_product->>'product_id')::INT;
+            v_quantity := (v_product->>'quantity')::INT;
 
-        -- Calculate total price for this product
-        v_total := v_total + (SELECT price FROM product WHERE product_id = v_product_id) * v_quantity;
+            RAISE NOTICE 'Processing product_id: % with quantity: %', v_product_id, v_quantity;
 
-        -- Update inventory (deduct stock)
-        UPDATE inventory
-        SET quantity = quantity - v_quantity
-        WHERE store_id = p_store_id AND product_id = v_product_id;
-    END LOOP;
+            -- Check inventory before processing the sale item
+            IF (SELECT quantity FROM retail_shop.inventory WHERE store_id = p_store_id AND product_id = v_product_id) < v_quantity THEN
+                RAISE EXCEPTION 'Insufficient stock for product_id: %', v_product_id;
+            END IF;
 
-    -- Update the total value in the sale record
-    UPDATE sale
-    SET total_amount = v_total
-    WHERE sale_id = v_sale_id;  -- Use sale_id to identify the correct sale
+            -- Insert into sale_item
+            INSERT INTO retail_shop.sale_item (sale_id, product_id, quantity, price)
+            VALUES (v_sale_id, v_product_id, v_quantity, (SELECT price FROM retail_shop.product WHERE product_id = v_product_id));
 
-EXCEPTION
-    WHEN OTHERS THEN
-        ROLLBACK;  -- Rollback on error
-        RAISE NOTICE 'Transaction failed. Rolled back: %', SQLERRM; -- Log the error message
+            -- Calculate total price for this product
+            v_total := v_total + (SELECT price FROM retail_shop.product WHERE product_id = v_product_id) * v_quantity;
+
+            -- Update inventory (deduct stock)
+            UPDATE retail_shop.inventory
+            SET quantity = quantity - v_quantity
+            WHERE store_id = p_store_id AND product_id = v_product_id;
+        END LOOP;
+
+        -- Update the total value in the sale record
+        UPDATE retail_shop.sale
+        SET total_amount = v_total
+        WHERE sale_id = v_sale_id;
+
+        COMMIT;  -- Commit the transaction
+        RAISE NOTICE 'Transaction committed successfully';
+
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;  -- Rollback on error
+            RAISE NOTICE 'Transaction failed. Rolled back: %', SQLERRM;
+            RAISE;  -- Re-raise the exception
+    END;
 END;
 $$;
 
