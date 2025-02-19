@@ -14,14 +14,13 @@ DECLARE
     v_quantity INT;
     v_total DECIMAL(10, 2) := 0;
 BEGIN
-    BEGIN  -- Start of transaction block
         RAISE NOTICE 'Starting sale recording with store_id: %, customer_id: %, product_list: %',
                      p_store_id, p_customer_id, p_product_list;
 
         -- Insert sale record and get sale_id
-        INSERT INTO retail_shop.sale (store_id, customer_id, employee_id, sale_date, total_amount)
-        VALUES (p_store_id, p_customer_id, p_employee_id, CURRENT_DATE, 0.00)
-        RETURNING sale_id INTO v_sale_id;
+        SELECT COALESCE(MAX(sale_id), 0) + 1 INTO v_sale_id FROM retail_shop.sale;
+        INSERT INTO retail_shop.sale (sale_id, store_id, customer_id, employee_id, sale_date, total_amount)
+        VALUES (v_sale_id, p_store_id, p_customer_id, p_employee_id, CURRENT_DATE, 0.00);
 
         RAISE NOTICE 'Created sale with ID: %', v_sale_id;
 
@@ -56,15 +55,12 @@ BEGIN
         SET total_amount = v_total
         WHERE sale_id = v_sale_id;
 
-        COMMIT;  -- Commit the transaction
-        RAISE NOTICE 'Transaction committed successfully';
 
     EXCEPTION
         WHEN OTHERS THEN
             ROLLBACK;  -- Rollback on error
             RAISE NOTICE 'Transaction failed. Rolled back: %', SQLERRM;
             RAISE;  -- Re-raise the exception
-    END;
 END;
 $$;
 
