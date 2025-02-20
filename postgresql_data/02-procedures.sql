@@ -65,13 +65,6 @@ END;
 $$;
 
 
--- CALL record_sale(
---     1,  -- p_store_id (replace with a valid store ID)
---     2,  -- p_customer_id (replace with a valid customer ID)
---     3,  -- p_employee_id (replace with a valid employee ID)
---     '[{"product_id": 1, "quantity": 2}, {"product_id": 2, "quantity": 1}]'  -- p_product_list
--- );
-
 
 -- procedure for adding product to inventory
 
@@ -94,10 +87,3 @@ BEGIN
 	END IF;
 END;
 $$;
-
-
--- CALL add_to_inventory(
--- 1, --p_store_id
--- 2, --p_product_id
--- 100 --p_quantity
--- );
